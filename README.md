@@ -77,13 +77,13 @@ Example Playbook
     - hosts: api001
       roles:
         - role: openstack-nova_api
-            rabbit_username: "openstack-nova"
-            rabbit_pass: "{{ RABBIT_NOVA_PASS }}"
-            admin_token: "{{ ADMIN_TOKEN }}"
-            metadata_secret: "{{ METADATA_SECRET }}"
-            neutron_pass: "{{ NEUTRON_PASS }}"
-            nova_api_hostname: "{{ ansible_eth0.ipv4.address }}"
-            nova_pass: "{{ NOVA_PASS }}"
+          rabbit_username: "openstack-nova"
+          rabbit_pass: "{{ RABBIT_NOVA_PASS }}"
+          admin_token: "{{ ADMIN_TOKEN }}"
+          metadata_secret: "{{ METADATA_SECRET }}"
+          neutron_pass: "{{ NEUTRON_PASS }}"
+          nova_api_hostname: "{{ ansible_eth0.ipv4.address }}"
+          nova_pass: "{{ NOVA_PASS }}"
 
 License
 -------
