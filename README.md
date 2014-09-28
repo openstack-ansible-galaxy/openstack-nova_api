@@ -85,6 +85,13 @@ Example Playbook
           nova_api_hostname: "{{ ansible_eth0.ipv4.address }}"
           nova_pass: "{{ NOVA_PASS }}"
 
+---
+
+A complete Ansible playbook demo, which uses this role, is available here: <https://github.com/dguerri/vagrant-ansible-openstack>
+
+---
+
+
 License
 -------
 
