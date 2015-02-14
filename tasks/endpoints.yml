@@ -29,18 +29,18 @@
   changed_when: false
   environment: openstack_service_env
 
-- name: Create the service entity for the image service
+- name: Create the service entity for the nova api service
   shell: keystone service-create --name nova --type compute --description="OpenStack Compute Service"
   environment: openstack_service_env
   when: "service_list.stdout.find('nova') == -1"
 
-- name: "Dump image service id"
+- name: "Dump nova api service id"
   shell: keystone service-list | awk '/ compute / {print $2}'
   register: compute_service_id
   changed_when: false
   environment: openstack_service_env
 
-- name: Create the API endpoint for the compute service
+- name: Create the api endpoint for the nova service
   shell: >
     keystone endpoint-create \
       --service-id={{ compute_service_id.stdout }} \
