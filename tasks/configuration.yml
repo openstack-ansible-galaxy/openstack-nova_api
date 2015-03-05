@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-- name: Configure nova api
+- name: Configure Nova API
   ini_file: dest=/etc/nova/nova.conf
             section="{{ item.section }}"
             option="{{ item.option }}"
@@ -27,6 +27,9 @@
     - section:  DEFAULT
       option:   my_ip
       value:    "{{ my_ip }}"
+    - section:  DEFAULT
+      option:   metadata_port
+      value:    "{{ metadata_port }}"
     # Message Queue
     - section:  DEFAULT
       option:   rpc_backend
@@ -55,7 +58,7 @@
       value:    service
     - section:  DEFAULT
       option:   neutron_admin_username
-      value:    neutron
+      value:    "{{ neutron_admin_username }}"
     - section:  DEFAULT
       option:   neutron_admin_password
       value:    "{{ neutron_pass }}"
@@ -98,7 +101,7 @@
       value:    service
     - section:  keystone_authtoken
       option:   admin_user
-      value:    nova
+      value:    "{{ nova_user }}"
     - section:  keystone_authtoken
       option:   admin_password
       value:    "{{ nova_pass }}"
@@ -112,4 +115,4 @@
       option:   protocol
       value:    "{{ glance_protocol }}"
   notify:
-    - Restart nova api
+    - Reload Nova API

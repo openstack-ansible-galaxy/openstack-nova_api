@@ -19,48 +19,28 @@ A Glance server. See below.
 Role Variables
 --------------
 
-### Nova API (set by this role)
-
 | Name | Default value | Description | Note |
 |---  |---  |---  |--- |
 | `my_ip` | `{{ ansible_eth0.ipv4.address }}` | Management IP for nova-api ||
 | `nova_api_hostname` | `localhost` | Hostname/IP address where this role runs, it will be used to set keystone endpoints ||
-| `nova_pass` | `nova_pass_default` | Desired nova-api password ||
+| `nova_user` | `nova` | nova-api user as defined on Keystone||
+| `nova_pass` | `nova_pass_default` | nova-api password as defined on Keystone||
 | `nova_port` | `8774` | Desired nova-api port ||
+| `metadata_port` | `8775` | Desired nova-api metadata port ||
 | `nova_protocol` | `http` | Desired nova protocol (http/https) | WiP, do not use. |
-
-### RabbitMQ (must exist)
-
-| Name | Default value | Description | Note |
-|---  |---  |---  |--- |
 | `rabbit_hostname` | `localhost` | Hostname/IP address where the RabbitMQ service runs ||
 | `rabbit_username` | `rabbit_username_default` | RabbitMQ username for nova ||
 | `rabbit_pass` | `rabbit_pass_default` | RabbitMQ password for nova ||
-
-### Neutron (must exist)
-
-| Name | Default value | Description | Note |
-|---  |---  |---  |--- |
 | `neutron_hostname` | `localhost` | Hostname/IP address where the neutron server runs ||
-| `neutron_pass` | `neutron_pass_default` | Neutron admin password ||
 | `neutron_port` | `9696` | Neutron port ||
 | `neutron_protocol` | `http` | Neutron protocol (http/https) ||
+| `neutron_admin_username` | `neutron` | Neutron admin user ||
+| `neutron_pass` | `neutron_pass_default` | Neutron admin password ||
 | `metadata_secret` | `metadata_secret_default` | Metadata secret, as configured on neutron ||
-
-### Keystone (must exist)
-
-| Name | Default value | Description | Note |
-|---  |---  |---  |--- |
-| `admin_token` | `admin_token_default` | Keystone service token ||
 | `keystone_admin_port` | `35357` | Keystone admin port ||
 | `keystone_hostname` | `localhost` | Hostname/IP address where keystone runs ||
 | `keystone_port` | `5000` | Keystone port ||
 | `keystone_protocol` | `http` | Keystone protocol (http/https) ||
-
-### Glance (must exist)
-
-| Name | Default value | Description | Note |
-|---  |---  |---  |--- |
 | `glance_hostname` | `localhost` | Hostname/IP address where glance runs ||
 | `glance_port` | `9292` | Glance port ||
 | `glance_protocol` | `http` | Glance protocol (http/https) ||
