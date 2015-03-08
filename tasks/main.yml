@@ -27,4 +27,4 @@
 - name: Make sure Nova API is started
   service: name=nova-api state=started
 - name: Wait Nova API
-  wait_for: host="{{ nova_api_hostname }}" port="{{ nova_port }}" delay=3
+  wait_for: host="{{ nova_api_hostname }}" port="{{ nova_port }}"
