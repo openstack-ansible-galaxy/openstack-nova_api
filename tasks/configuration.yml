@@ -28,8 +28,26 @@
       option:   my_ip
       value:    "{{ my_ip }}"
     - section:  DEFAULT
-      option:   metadata_port
-      value:    "{{ metadata_port }}"
+      option:   osapi_compute_listen
+      value:    "{{ nova_api_bind_host }}"
+    - section:  DEFAULT
+      option:   osapi_compute_listen_port
+      value:    "{{ nova_port }}"
+    - section:  DEFAULT
+      option:   ec2_listen
+      value:    "{{ nova_ec2_bind_host }}"
+    - section:  DEFAULT
+      option:   ec2_listen_port
+      value:    "{{ nova_ec2_port }}"
+    - section:  DEFAULT
+      option:   metadata_listen
+      value:    "{{ nova_metadata_bind_host }}"
+    - section:  DEFAULT
+      option:   metadata_listen_port
+      value:    "{{ nova_metadata_port }}"
+    - section:  DEFAULT
+      option:   logdir
+      value:    "{{ nova_log_dir }}"
     # Message Queue
     - section:  DEFAULT
       option:   rpc_backend

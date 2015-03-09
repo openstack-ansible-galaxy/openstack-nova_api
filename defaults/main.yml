@@ -25,8 +25,13 @@ nova_api_hostname: localhost
 nova_pass: nova_pass_default
 nova_user: nova
 nova_protocol: http
+nova_api_bind_host: 0.0.0.0
+nova_metadata_bind_host: 0.0.0.0
+nova_ec2_bind_host: 0.0.0.0
+nova_ec2_port: 8773
 nova_port: 8774
-metadata_port: 8775
+nova_metadata_port: 8775
+nova_log_dir: /var/log/nova
 
 # RabbitMQ
 rabbit_hostname: localhost
