@@ -23,8 +23,15 @@ my_ip: "{{ ansible_eth0.ipv4.address }}"
 # Nova API
 nova_api_hostname: localhost
 nova_pass: nova_pass_default
-nova_port: 8774
+nova_user: nova
 nova_protocol: http
+nova_api_bind_host: 0.0.0.0
+nova_metadata_bind_host: 0.0.0.0
+nova_ec2_bind_host: 0.0.0.0
+nova_ec2_port: 8773
+nova_port: 8774
+nova_metadata_port: 8775
+nova_log_dir: /var/log/nova
 
 # RabbitMQ
 rabbit_hostname: localhost
@@ -36,10 +43,10 @@ neutron_hostname: localhost
 neutron_pass: neutron_pass_default
 neutron_port: 9696
 neutron_protocol: http
+neutron_admin_username: neutron
 metadata_secret: metadata_secret_default
 
 # Keystone
-admin_token: admin_token_default
 keystone_admin_port: 35357
 keystone_hostname: localhost
 keystone_port: 5000

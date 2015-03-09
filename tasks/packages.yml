@@ -17,7 +17,8 @@
 # limitations under the License.
 #
 
-- name: Install nova api
+- name: Install Nova API
   apt: name="{{ item }}" state=present
   with_items:
     - nova-api
+    - python-novaclient

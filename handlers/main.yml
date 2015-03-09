@@ -17,5 +17,11 @@
 # limitations under the License.
 #
 
-- name: Restart nova api
+- name: Reload Nova API
+  service: name=nova-api state=reloaded
+
+- name: Restart Nova API
   service: name=nova-api state=restarted
+
+- name: Start Nova API
+  service: name=nova-api state=started
