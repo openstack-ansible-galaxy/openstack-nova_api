@@ -33,16 +33,28 @@
           public_url: "http://127.0.0.1:5000/v2.0"
           internal_url: "http://127.0.0.1:5000/v2.0"
           admin_url: "http://127.0.0.1:35357/v2.0"
-        - service_name: glance
-          public_url: "http://127.0.0.1:9292/"
-          internal_url: "http://127.0.0.1:9292/"
-          admin_url: "http://127.0.0.1:9292/"
         - service_name: nova
           public_url: "http://127.0.0.1:8774/v2/%(tenant_id)s"
           internal_url: "http://127.0.0.1:8774/v2/%(tenant_id)s"
           admin_url: "http://127.0.0.1:8774/v2/%(tenant_id)s"
+        - service_name: glance
+          public_url: "http://127.0.0.1:9292/"
+          internal_url: "http://127.0.0.1:9292/"
+          admin_url: "http://127.0.0.1:9292/"
 
-# ToDo: add conductor
+    - role: dguerri.openstack-glance
+      glance_hostname: 127.0.0.1
+      glance_pass: "glance password"
+      keystone_hostname: 127.0.0.1
+      rabbit_hostname: 127.0.0.1
+      rabbit_username: guest
+      rabbit_pass: "guest"
+
+    - role: dguerri.openstack-nova_conductor
+      keystone_hostname: "127.0.0.1"
+      rabbit_hostname: "127.0.0.1"
+      rabbit_username: "guest"
+      rabbit_pass: "guest"
 
     - role: openstack-nova_api
       keystone_hostname: "127.0.0.1"
