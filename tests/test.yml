@@ -40,6 +40,7 @@
           admin_url: "http://127.0.0.1:9292/"
 
     - role: dguerri.openstack-glance
+      my_ip: "127.0.0.1"
       glance_hostname: 127.0.0.1
       glance_pass: "glance password"
       keystone_hostname: 127.0.0.1
@@ -54,6 +55,7 @@
       rabbit_pass: "guest"
 
     - role: openstack-nova_api
+      my_ip: "127.0.0.1"
       keystone_hostname: "127.0.0.1"
       rabbit_hostname: "127.0.0.1"
       rabbit_username: "guest"
@@ -63,5 +65,6 @@
       glance_hostname: "127.0.0.1"
       neutron_host: "127.0.0.1"
       neutron_pass: "neutron password"
+      nova_enabled_apis: "osapi_compute"
       tags:
         - nova-api

@@ -28,6 +28,9 @@
       option:   my_ip
       value:    "{{ my_ip }}"
     - section:  DEFAULT
+      option:   enabled_apis
+      value:    "{{ nova_enabled_apis }}"
+    - section:  DEFAULT
       option:   osapi_compute_listen
       value:    "{{ nova_api_bind_host }}"
     - section:  DEFAULT

@@ -32,6 +32,10 @@ nova_ec2_port: 8773
 nova_port: 8774
 nova_metadata_port: 8775
 nova_log_dir: /var/log/nova
+# The following parameter is not needed by Nova API (and beacuse of that, it
+# has not been documented) It was added as a workaround for travis-ci, which
+# doesn't support iptables nat table
+nova_enabled_apis: ec2,osapi_compute,metadata
 
 # RabbitMQ
 rabbit_hostname: localhost
@@ -56,3 +60,5 @@ keystone_protocol: http
 glance_hostname: localhost
 glance_port: 9292
 glance_protocol: http
+
+
