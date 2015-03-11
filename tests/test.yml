@@ -15,18 +15,15 @@
         - { name: admin, password: "admin password", tenant: admin }
         - { name: demo, password: "demo password", tenant: demo }
         - { name: glance, password: "glance password", tenant: service }
-        - { name: neutron, password: "neutron password", tenant: service }
         - { name: nova, password: "nova password", tenant: service }
       keystone_roles:
         - { name: admin, user: admin, tenant: admin }
         - { name: _member_, user: demo, tenant: demo  }
         - { name: admin, user: glance, tenant: service  }
-        - { name: admin, user: neutron, tenant: service  }
         - { name: admin, user: nova, tenant: service  }
       keystone_services:
         - { name: keystone, service_type: identity }
         - { name: glance, service_type: image }
-        - { name: neutron, service_type: network }
         - { name: nova, service_type: compute }
       keystone_endpoints:
         - service_name: keystone
