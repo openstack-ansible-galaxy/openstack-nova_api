@@ -133,4 +133,4 @@
       option:   protocol
       value:    "{{ glance_protocol }}"
   notify:
-    - Reload Nova API
+    - Restart Nova API
