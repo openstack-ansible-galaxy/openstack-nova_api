@@ -22,6 +22,8 @@ install:
 
   # Install required ansible roles
   - ansible-galaxy install dguerri.openstack-keystone,2.0.1
+  - ansible-galaxy install dguerri.openstack-nova_conductor,2.0.0
+  - ansible-galaxy install dguerri.openstack-glance,2.0.1
 
 
 script:
@@ -34,11 +36,24 @@ script:
     --sudo
 
   # Test role idempotency
-  - service nova-api status
-#  - >
-#    ansible-playbook -i tests/inventory tests/test.yml -t nova-api
-#    --connection=local --sudo | grep -q 'changed=0.*failed=0'
-#    && (echo 'Idempotence test: pass' && exit 0)
-#    || (echo 'Idempotence test: fail' && exit 1)
+  - >
+    ansible-playbook -i tests/inventory tests/test.yml -t nova-api
+    --connection=local --sudo | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
 
-# Without conductor we cannot test nova-api service
+  # Test serice status
+  - service nova-api status
+
+  # Test Nova setup
+  - >
+    nova --os_auth_url="http://127.0.0.1:5000/v2.0" --os_tenant_name=demo
+    --os_password="demo password" --os_username=demo image-list
+
+  - >
+    nova --os_auth_url="http://127.0.0.1:5000/v2.0" --os_tenant_name=demo
+    --os_password="demo password" --os_username=demo list
+
+#  - sudo cat /var/log/keystone/keystone-all.log
+#  - sudo cat /var/log/glance/api.log
+#  - sudo cat /var/log/nova/nova-api.log

@@ -15,36 +15,47 @@
         - { name: admin, password: "admin password", tenant: admin }
         - { name: demo, password: "demo password", tenant: demo }
         - { name: glance, password: "glance password", tenant: service }
-        - { name: neutron, password: "neutron password", tenant: service }
         - { name: nova, password: "nova password", tenant: service }
       keystone_roles:
         - { name: admin, user: admin, tenant: admin }
         - { name: _member_, user: demo, tenant: demo  }
         - { name: admin, user: glance, tenant: service  }
-        - { name: admin, user: neutron, tenant: service  }
         - { name: admin, user: nova, tenant: service  }
       keystone_services:
         - { name: keystone, service_type: identity }
         - { name: glance, service_type: image }
-        - { name: neutron, service_type: network }
         - { name: nova, service_type: compute }
       keystone_endpoints:
         - service_name: keystone
           public_url: "http://127.0.0.1:5000/v2.0"
           internal_url: "http://127.0.0.1:5000/v2.0"
           admin_url: "http://127.0.0.1:35357/v2.0"
-        - service_name: glance
-          public_url: "http://127.0.0.1:9292/"
-          internal_url: "http://127.0.0.1:9292/"
-          admin_url: "http://127.0.0.1:9292/"
         - service_name: nova
           public_url: "http://127.0.0.1:8774/v2/%(tenant_id)s"
           internal_url: "http://127.0.0.1:8774/v2/%(tenant_id)s"
           admin_url: "http://127.0.0.1:8774/v2/%(tenant_id)s"
+        - service_name: glance
+          public_url: "http://127.0.0.1:9292/"
+          internal_url: "http://127.0.0.1:9292/"
+          admin_url: "http://127.0.0.1:9292/"
 
-# ToDo: add conductor
+    - role: dguerri.openstack-glance
+      my_ip: "127.0.0.1"
+      glance_hostname: 127.0.0.1
+      glance_pass: "glance password"
+      keystone_hostname: 127.0.0.1
+      rabbit_hostname: 127.0.0.1
+      rabbit_username: guest
+      rabbit_pass: "guest"
+
+    - role: dguerri.openstack-nova_conductor
+      keystone_hostname: "127.0.0.1"
+      rabbit_hostname: "127.0.0.1"
+      rabbit_username: "guest"
+      rabbit_pass: "guest"
 
     - role: openstack-nova_api
+      my_ip: "127.0.0.1"
       keystone_hostname: "127.0.0.1"
       rabbit_hostname: "127.0.0.1"
       rabbit_username: "guest"
@@ -54,5 +65,6 @@
       glance_hostname: "127.0.0.1"
       neutron_host: "127.0.0.1"
       neutron_pass: "neutron password"
+      nova_enabled_apis: "osapi_compute"
       tags:
         - nova-api
