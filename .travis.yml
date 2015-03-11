@@ -23,7 +23,7 @@ install:
   # Install required ansible roles
   - ansible-galaxy install dguerri.openstack-keystone,2.0.1
   - ansible-galaxy install dguerri.openstack-nova_conductor,2.0.0
-  - ansible-galaxy install dguerri.openstack-glance,2.0.0
+  - ansible-galaxy install dguerri.openstack-glance,2.0.1
 
 
 script:
