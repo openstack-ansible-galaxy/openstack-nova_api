@@ -2,8 +2,8 @@ Nova API OpenStack Ansible Role
 =========
 
 **Status**
-* [![Build Status](https://travis-ci.org/dguerri/openstack-nova_api.svg?branch=master)](https://travis-ci.org/dguerri/openstack-nova_api) on master branch
-* [![Build Status](https://travis-ci.org/dguerri/openstack-nova_api.svg?branch=development)](https://travis-ci.org/dguerri/openstack-nova_api) on development branch
+* [![Build Status](https://travis-ci.org/openstack-ansible-galaxy/openstack-nova_api.svg?branch=master)](https://travis-ci.org/openstack-ansible-galaxy/openstack-nova_api) on master branch
+* [![Build Status](https://travis-ci.org/openstack-ansible-galaxy/openstack-nova_api.svg?branch=development)](https://travis-ci.org/openstack-ansible-galaxy/openstack-nova_api) on development branch
 * [![Ansible Galaxy](http://img.shields.io/badge/dguerri-openstack--nova_api-blue.svg)](https://galaxy.ansible.com/list#/roles/1777) on Ansible Galaxy
 
 OpenStack Nova API service installation
