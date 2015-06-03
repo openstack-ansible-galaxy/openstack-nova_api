@@ -19,12 +19,13 @@
 
 - meta: flush_handlers
 
+- include: facts.yml
 - include: packages.yml
 - include: configuration.yml
 
 - meta: flush_handlers
 
 - name: Make sure Nova API is started
-  service: name=nova-api state=started
+  service: name={{ nova_api_service }} state=started
 - name: Wait Nova API
   wait_for: host="{{ nova_api_hostname }}" port="{{ nova_port }}"

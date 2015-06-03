@@ -17,11 +17,11 @@
 # limitations under the License.
 #
 
-- name: Reload Nova API
-  service: name={{ nova_api_service }} state=reloaded
 
-- name: Restart Nova API
-  service: name={{ nova_api_service }} state=restarted
+- name: Set service facts
+  set_fact: nova_api_service="nova-api"
+  when: ansible_os_family == 'Debian'
 
-- name: Start Nova API
-  service: name={{ nova_api_service }} state=started
+- name: Set service facts
+  set_fact: nova_api_service="openstack-nova-api"
+  when: ansible_os_family == 'RedHat'

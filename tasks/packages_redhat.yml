@@ -17,11 +17,8 @@
 # limitations under the License.
 #
 
-- name: Reload Nova API
-  service: name={{ nova_api_service }} state=reloaded
-
-- name: Restart Nova API
-  service: name={{ nova_api_service }} state=restarted
-
-- name: Start Nova API
-  service: name={{ nova_api_service }} state=started
+- name: Install nova api
+  yum: name="{{ item }}" state=present
+  with_items:
+    - openstack-nova-api
+    - python-novaclient

@@ -21,6 +21,8 @@ A Keystone server. See below.
 
 A Glance server. See below.
 
+For RHEL/CentOS, RHOSP or RDO repositories are needed.
+
 Role Variables
 --------------
 
@@ -79,6 +81,9 @@ A complete Ansible playbook demo, which uses this role, is available on Github (
 
 ---
 
+Credits
+-------
+RedHat support implemented by Abel Boldú <abel.boldu@gmx.com>
 
 License
 -------
