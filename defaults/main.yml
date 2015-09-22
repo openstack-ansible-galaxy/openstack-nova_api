@@ -18,29 +18,34 @@
 #
 
 # Common
-my_ip: "{{ ansible_eth0.ipv4.address }}"
+nova_api_my_ip: "{{ ansible_eth0.ipv4.address }}"
 
 # Nova API
 nova_api_hostname: localhost
-nova_pass: nova_pass_default
-nova_user: nova
-nova_protocol: http
+nova_api_pass: nova_pass_default
+nova_api_user: nova
+nova_api_protocol: http
 nova_api_bind_host: 0.0.0.0
-nova_metadata_bind_host: 0.0.0.0
-nova_ec2_bind_host: 0.0.0.0
-nova_ec2_port: 8773
-nova_port: 8774
-nova_metadata_port: 8775
-nova_log_dir: /var/log/nova
+nova_api_metadata_bind_host: 0.0.0.0
+nova_api_ec2_bind_host: 0.0.0.0
+nova_api_ec2_port: 8773
+nova_api_port: 8774
+nova_api_metadata_port: 8775
+nova_api_log_dir: /var/log/nova
 # The following parameter is not needed by Nova API (and beacuse of that, it
 # has not been documented) It was added as a workaround for travis-ci, which
 # doesn't support iptables nat table
-nova_enabled_apis: ec2,osapi_compute,metadata
+nova_api_enabled_apis: ec2,osapi_compute,metadata
 
 # RabbitMQ
-rabbit_hostname: localhost
-rabbit_pass: rabbit_pass_default
-rabbit_username: rabbit_username_default
+nova_api_rabbit_userid: rabbit_pass_default
+nova_api_rabbit_password: rabbit_username_default
+nova_api_rabbit_virtual_host: /
+nova_api_rabbit_retry_interval: 1
+nova_api_rabbit_host: localhost
+nova_api_rabbit_port: 5672
+nova_api_rabbit_hosts: "{{ nova_api_rabbit_host }}:{{ nova_api_rabbit_port }}"
+nova_api_rabbit_ha_queues: False
 
 # Neutron
 neutron_hostname: localhost
@@ -60,5 +65,3 @@ keystone_protocol: http
 glance_hostname: localhost
 glance_port: 9292
 glance_protocol: http
-
-

@@ -26,44 +26,59 @@
     # Common settings
     - section:  DEFAULT
       option:   my_ip
-      value:    "{{ my_ip }}"
+      value:    "{{ nova_api_my_ip }}"
     - section:  DEFAULT
       option:   enabled_apis
-      value:    "{{ nova_enabled_apis }}"
+      value:    "{{ nova_api_enabled_apis }}"
     - section:  DEFAULT
       option:   osapi_compute_listen
       value:    "{{ nova_api_bind_host }}"
     - section:  DEFAULT
       option:   osapi_compute_listen_port
-      value:    "{{ nova_port }}"
+      value:    "{{ nova_api_port }}"
     - section:  DEFAULT
       option:   ec2_listen
-      value:    "{{ nova_ec2_bind_host }}"
+      value:    "{{ nova_api_ec2_bind_host }}"
     - section:  DEFAULT
       option:   ec2_listen_port
-      value:    "{{ nova_ec2_port }}"
+      value:    "{{ nova_api_ec2_port }}"
     - section:  DEFAULT
       option:   metadata_listen
-      value:    "{{ nova_metadata_bind_host }}"
+      value:    "{{ nova_api_metadata_bind_host }}"
     - section:  DEFAULT
       option:   metadata_listen_port
-      value:    "{{ nova_metadata_port }}"
+      value:    "{{ nova_api_metadata_port }}"
     - section:  DEFAULT
       option:   logdir
-      value:    "{{ nova_log_dir }}"
-    # Message Queue
+      value:    "{{ nova_api_log_dir }}"
+    # RabbitMQ
     - section:  DEFAULT
       option:   rpc_backend
       value:    rabbit
     - section:  DEFAULT
-      option:   rabbit_host
-      value:    "{{ rabbit_hostname }}"
-    - section:  DEFAULT
       option:   rabbit_userid
-      value:    "{{ rabbit_username }}"
+      value:    "{{ nova_api_rabbit_userid }}"
     - section:  DEFAULT
       option:   rabbit_password
-      value:    "{{ rabbit_pass }}"
+      value:    "{{ nova_api_rabbit_password }}"
+    - section:  DEFAULT
+      option:   rabbit_virtual_host
+      value:    "{{ nova_api_rabbit_virtual_host }}"
+    - section:  DEFAULT
+      option:   rabbit_retry_interval
+      value:    "{{ nova_api_rabbit_retry_interval }}"
+    - section:  DEFAULT
+      option:   rabbit_host
+      value:    "{{ nova_api_rabbit_host }}"
+    - section:  DEFAULT
+      option:   rabbit_port
+      value:    "{{ nova_api_rabbit_port }}"
+    - section:  DEFAULT
+      option:   rabbit_hosts
+      value:    "{{ nova_api_rabbit_hosts }}"
+    - section:  DEFAULT
+      option:   rabbit_ha_queues
+      value:    "{{ nova_api_rabbit_ha_queues }}"
     # Neutron
     - section:  DEFAULT
       option:   network_api_class
@@ -122,10 +137,10 @@
       value:    service
     - section:  keystone_authtoken
       option:   admin_user
-      value:    "{{ nova_user }}"
+      value:    "{{ nova_api_user }}"
     - section:  keystone_authtoken
       option:   admin_password
-      value:    "{{ nova_pass }}"
+      value:    "{{ nova_api_pass }}"
     - section:  glance
       option:   host
       value:    "{{ glance_hostname }}"

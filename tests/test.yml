@@ -43,28 +43,28 @@
       glance_hostname: 127.0.0.1
       glance_pass: "glance password"
       keystone_hostname: 127.0.0.1
-      rabbit_hostname: 127.0.0.1
-      rabbit_username: guest
-      rabbit_pass: "guest"
+      glance_rabbit_host: 127.0.0.1
+      glance_rabbit_userid: guest
+      glance_rabbit_password: "guest"
 
     - role: dguerri.openstack-nova_conductor
       my_ip: "127.0.0.1"
       keystone_hostname: "127.0.0.1"
-      rabbit_hostname: "127.0.0.1"
-      rabbit_username: "guest"
+      rabbit_hostname: 127.0.0.1
+      rabbit_username: guest
       rabbit_pass: "guest"
 
     - role: openstack-nova_api
-      my_ip: "127.0.0.1"
+      nova_api_my_ip: "127.0.0.1"
       keystone_hostname: "127.0.0.1"
-      rabbit_hostname: "127.0.0.1"
-      rabbit_username: "guest"
-      rabbit_pass: "guest"
+      nova_api_rabbit_host: "127.0.0.1"
+      nova_api_rabbit_userid: "guest"
+      nova_api_rabbit_password: "guest"
       metadata_secret: "metadata_secret"
-      nova_pass: "nova password"
+      nova_api_pass: "nova password"
       glance_hostname: "127.0.0.1"
       neutron_host: "127.0.0.1"
       neutron_pass: "neutron password"
-      nova_enabled_apis: "osapi_compute"
+      nova_api_enabled_apis: "osapi_compute"
       tags:
         - nova-api
