@@ -22,3 +22,4 @@
   with_items:
     - openstack-nova-api
     - python-novaclient
+    - python-cinderclient
