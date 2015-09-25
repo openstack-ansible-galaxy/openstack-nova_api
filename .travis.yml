@@ -1,59 +1,28 @@
----
 language: python
-python: "2.7"
-
+python: '2.7'
 services:
-  - rabbitmq
-
-
+- rabbitmq
 before_install:
-  # Make sure everything's up to date.
-  - sudo apt-get install python-software-properties
-  - sudo add-apt-repository -y cloud-archive:icehouse
-  - sudo apt-get update -qq
-
-
+- sudo apt-get install python-software-properties
+- sudo add-apt-repository -y cloud-archive:icehouse
+- sudo apt-get update -qq
 install:
-  # Install Ansible.
-  - sudo pip install ansible
-
-  # Add ansible.cfg to pick up roles path.
-  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
-
-  # Install required ansible roles
-  - ansible-galaxy install dguerri.openstack-keystone,2.0.1
-  - ansible-galaxy install dguerri.openstack-nova_conductor,2.0.0
-  - ansible-galaxy install dguerri.openstack-glance,2.0.1
-
-
+- sudo pip install ansible
+- '{ echo ''[defaults]''; echo ''roles_path = ../''; } >> ansible.cfg'
+- ansible-galaxy install dguerri.openstack-keystone,2.0.1
+- ansible-galaxy install dguerri.openstack-nova_conductor,2.0.0
+- ansible-galaxy install dguerri.openstack-glance,2.0.1
 script:
-  # Check the role/playbook's syntax.
-  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
-
-  # Run the role/playbook with ansible-playbook.
-  - >
-    ansible-playbook -i tests/inventory tests/test.yml --connection=local
-    --sudo
-
-  # Test role idempotency
-  - >
-    ansible-playbook -i tests/inventory tests/test.yml -t nova-api
-    --connection=local --sudo | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
-
-  # Test serice status
-  - service nova-api status
-
-  # Test Nova setup
-  - >
-    nova --os_auth_url="http://127.0.0.1:5000/v2.0" --os_tenant_name=demo
-    --os_password="demo password" --os_username=demo image-list
-
-  - >
-    nova --os_auth_url="http://127.0.0.1:5000/v2.0" --os_tenant_name=demo
-    --os_password="demo password" --os_username=demo list
-
-#  - sudo cat /var/log/keystone/keystone-all.log
-#  - sudo cat /var/log/glance/api.log
-#  - sudo cat /var/log/nova/nova-api.log
+- ansible-playbook -i tests/inventory tests/test.yml --syntax-check
+- |
+  ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
+- |
+  ansible-playbook -i tests/inventory tests/test.yml -t nova-api --connection=local --sudo | grep -q 'changed=0.*failed=0' && (echo 'Idempotence test: pass' && exit 0) || (echo 'Idempotence test: fail' && exit 1)
+- service nova-api status
+- |
+  nova --os_auth_url="http://127.0.0.1:5000/v2.0" --os_tenant_name=demo --os_password="demo password" --os_username=demo image-list
+- |
+  nova --os_auth_url="http://127.0.0.1:5000/v2.0" --os_tenant_name=demo --os_password="demo password" --os_username=demo list
+notifications:
+  slack:
+    secure: f5+BNuiFOE+Ny5C+CLlXZc7EN9MEGHwCEglfiapzKyhZwzrHmTuQPKTlATqMtkygdHZe9iJgVDCeZ1612s7ydvRDB9RQke+jYnu4xm6GPBhdcLzLA0tv6lJWxAZIxsJsFScbV52OrKbP7pXF6wlv3+byASp7sSxgiBGhf6tcz0MEwn6iv9aW1EyP0qcXnsl+oG9DHf2YsvnbdS2OG09nl1TmWMwWy1FNAsrROqEXCOdPIWyObN05bv7kJlrGq7MF7uLj7pNbQ83LB26FKPPZ8HfNLHI6iNUsMWvwwCXxWKmtXyZM2plzO4RmhmiuLUlCXmuMVY+OQ/5G78jdbzwY4aMe9SjNdH9KzF3u37G1DD82UkxXww0jxaz40j156UouYb2WMFzVW5JgZQFgNymf8YbHM0MmfyrORPIIKSq8hKHv3APhKlj9Lb1kIg5FdgDsb1uOfqIrJTB94pa1CAFiYUGTmSZFSOpNiwa1V9Z/qba9329wSIdEPBFbgtBZjajuQdBq74CwLDffUAHLTupg/V31cfQjoOfGSAH3dfZsbSjBX2aWJr3Ce7Y2L+G1KhlsdVAsdnG+Xi/tXgxkAsiZFjfMwSC2Mx5DRMNNueKIiZCluGzdUpyuE2AnNx9BUSwRjYxL1gbQ134/AVa6rWYDKFkUK+AY+4lhb7z5Jd66CYQ=
