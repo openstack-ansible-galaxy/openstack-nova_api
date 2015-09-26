@@ -17,11 +17,5 @@
 # limitations under the License.
 #
 
-- name: Reload Nova API
-  service: name={{ nova_api_service }} state=reloaded
-
 - name: Restart Nova API
-  service: name={{ nova_api_service }} state=restarted
-
-- name: Start Nova API
-  service: name={{ nova_api_service }} state=started
+  service: name={{ nova_api_service }} state=restarted enabled=yes
