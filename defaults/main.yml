@@ -20,6 +20,9 @@
 # Common
 nova_api_my_ip: "{{ ansible_eth0.ipv4.address }}"
 
+# Database
+nova_api_database_url: sqlite:////var/lib/nova/nova.sqlite
+
 # Nova API
 nova_api_hostname: localhost
 nova_api_pass: nova_pass_default

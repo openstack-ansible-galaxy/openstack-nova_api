@@ -7,11 +7,12 @@ before_install:
 - sudo add-apt-repository -y cloud-archive:icehouse
 - sudo apt-get update -qq
 install:
+- sudo apt-get install git
 - sudo pip install ansible
 - '{ echo ''[defaults]''; echo ''roles_path = ../''; } >> ansible.cfg'
-- ansible-galaxy install dguerri.openstack-keystone,2.0.1
-- ansible-galaxy install dguerri.openstack-nova_conductor,2.0.0
-- ansible-galaxy install dguerri.openstack-glance,2.0.1
+- git clone --depth=1 https://github.com/openstack-ansible-galaxy/openstack-keystone.git ../openstack-keystone
+- git clone --depth=1 https://github.com/openstack-ansible-galaxy/openstack-nova_conductor.git ../openstack-nova_conductor
+- git clone --depth=1 https://github.com/openstack-ansible-galaxy/openstack-glance.git ../openstack-glance
 script:
 - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
 - |

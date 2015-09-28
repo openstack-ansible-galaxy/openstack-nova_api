@@ -3,7 +3,7 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - role: dguerri.openstack-keystone
+    - role: openstack-keystone
       keystone_admin_bind_host: 127.0.0.1
       keystone_bind_host: 127.0.0.1
       keystone_admin_token: "os token"
@@ -39,7 +39,7 @@
           internal_url: "http://127.0.0.1:9292/"
           admin_url: "http://127.0.0.1:9292/"
 
-    - role: dguerri.openstack-glance
+    - role: openstack-glance
       glance_hostname: 127.0.0.1
       glance_pass: "glance password"
       keystone_hostname: 127.0.0.1
@@ -47,8 +47,8 @@
       glance_rabbit_userid: guest
       glance_rabbit_password: "guest"
 
-    - role: dguerri.openstack-nova_conductor
-      my_ip: "127.0.0.1"
+    - role: openstack-nova_conductor
+      nova_conductor_my_ip: "127.0.0.1"
       keystone_hostname: "127.0.0.1"
       nova_conductor_rabbit_host: 127.0.0.1
       nova_conductor_rabbit_userid: guest

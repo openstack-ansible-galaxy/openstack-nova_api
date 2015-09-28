@@ -152,3 +152,16 @@
       value:    "{{ glance_protocol }}"
   notify:
     - Restart Nova API
+
+- name: Configure Nova API database
+  ini_file: >
+    dest=/etc/nova/nova.conf
+    section="{{ item.section }}"
+    option="{{ item.option }}"
+    value="{{ item.value }}"
+  with_items:
+    - section: database
+      option: connection
+      value: "{{ nova_api_database_url }}"
+  notify:
+    - Restart Nova API
