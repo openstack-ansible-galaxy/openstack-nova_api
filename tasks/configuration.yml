@@ -49,7 +49,7 @@
       option:   metadata_listen_port
       value:    "{{ nova_api_metadata_port }}"
     - section:  DEFAULT
-      option:   logdir
+      option:   log_dir
       value:    "{{ nova_api_log_dir }}"
     - section:  DEFAULT
       option:   debug
