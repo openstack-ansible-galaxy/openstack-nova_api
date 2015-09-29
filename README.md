@@ -28,6 +28,7 @@ Role Variables
 
 | Name | Default value | Description |
 |---  |---  |---  |
+| `nova_api_database_url` | `sqlite:////var/lib/nova/nova.sqlite` | Database URI ||
 | `nova_api_my_ip` | `{{ ansible_eth0.ipv4.address }}` | Management IP for nova-api |
 | `nova_api_user` | `nova` | nova-api user as defined on Keystone|
 | `nova_api_pass` | `nova_pass_default` | nova-api password as defined on Keystone|

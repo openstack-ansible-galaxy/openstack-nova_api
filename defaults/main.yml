@@ -20,6 +20,9 @@
 # Common
 nova_api_my_ip: "{{ ansible_eth0.ipv4.address }}"
 
+# Database
+nova_api_database_url: sqlite:////var/lib/nova/nova.sqlite
+
 # Nova API
 nova_api_hostname: localhost
 nova_api_pass: nova_pass_default
@@ -32,6 +35,8 @@ nova_api_ec2_port: 8773
 nova_api_port: 8774
 nova_api_metadata_port: 8775
 nova_api_log_dir: /var/log/nova
+nova_api_log_debug: False
+nova_api_log_verbose: False
 # The following parameter is not needed by Nova API (and beacuse of that, it
 # has not been documented) It was added as a workaround for travis-ci, which
 # doesn't support iptables nat table

@@ -51,6 +51,12 @@
     - section:  DEFAULT
       option:   logdir
       value:    "{{ nova_api_log_dir }}"
+    - section:  DEFAULT
+      option:   debug
+      value:    "{{ nova_api_log_debug }}"
+    - section:  DEFAULT
+      option:   verbose
+      value:    "{{ nova_api_log_verbose }}"
     # RabbitMQ
     - section:  DEFAULT
       option:   rpc_backend
@@ -150,5 +156,18 @@
     - section:  glance
       option:   protocol
       value:    "{{ glance_protocol }}"
+  notify:
+    - Restart Nova API
+
+- name: Configure Nova API database
+  ini_file: >
+    dest=/etc/nova/nova.conf
+    section="{{ item.section }}"
+    option="{{ item.option }}"
+    value="{{ item.value }}"
+  with_items:
+    - section: database
+      option: connection
+      value: "{{ nova_api_database_url }}"
   notify:
     - Restart Nova API
