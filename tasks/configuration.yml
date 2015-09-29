@@ -51,6 +51,12 @@
     - section:  DEFAULT
       option:   logdir
       value:    "{{ nova_api_log_dir }}"
+    - section:  DEFAULT
+      option:   debug
+      value:    "{{ nova_api_log_debug }}"
+    - section:  DEFAULT
+      option:   verbose
+      value:    "{{ nova_api_log_verbose }}"
     # RabbitMQ
     - section:  DEFAULT
       option:   rpc_backend
