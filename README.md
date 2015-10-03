@@ -43,7 +43,7 @@ Role Variables
 | `neutron_protocol` | `http` | Neutron protocol (http/https) |
 | `neutron_admin_username` | `neutron` | Neutron admin user |
 | `neutron_pass` | `neutron_pass_default` | Neutron admin password |
-| `metadata_secret` | `metadata_secret_default` | Metadata secret, as configured on neutron |
+| `neutron_metadata_secret` | `metadata_secret_default` | Metadata secret, as configured on neutron |
 | `keystone_admin_port` | `35357` | Keystone admin port |
 | `keystone_hostname` | `localhost` | Hostname/IP address where keystone runs |
 | `keystone_port` | `5000` | Keystone port |

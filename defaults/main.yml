@@ -58,7 +58,7 @@ neutron_pass: neutron_pass_default
 neutron_port: 9696
 neutron_protocol: http
 neutron_admin_username: neutron
-metadata_secret: metadata_secret_default
+neutron_metadata_secret: metadata_secret_default
 
 # Keystone
 keystone_admin_port: 35357
