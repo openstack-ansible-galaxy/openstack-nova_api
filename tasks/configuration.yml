@@ -121,7 +121,7 @@
       value:    true
     - section:  DEFAULT
       option:   neutron_metadata_proxy_shared_secret
-      value:    "{{ metadata_secret }}"
+      value:    "{{ neutron_metadata_secret }}"
     # Keystone
     - section:  DEFAULT
       option:   auth_strategy

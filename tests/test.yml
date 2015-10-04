@@ -60,7 +60,7 @@
       nova_api_rabbit_host: "127.0.0.1"
       nova_api_rabbit_userid: "guest"
       nova_api_rabbit_password: "guest"
-      metadata_secret: "metadata_secret"
+      neutron_metadata_secret: "metadata_secret"
       nova_api_pass: "nova password"
       glance_hostname: "127.0.0.1"
       neutron_host: "127.0.0.1"
